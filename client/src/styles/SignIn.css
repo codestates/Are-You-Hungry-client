@@ -1,0 +1,67 @@
+.main {
+  background-color: #f3f5f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main form {
+  width: 400px;
+}
+
+.main form h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+form .input-field {
+  width: 100%;
+}
+
+.input-field input[type="text"],
+.input-field input[type="email"],
+.input-field input[type="password"],
+.input-field input[type="tel"] {
+  display: block;
+  border-radius: 5px;
+  width: 100%;
+  border: solid 1px #c4c4c4;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+  padding: 0.75rem;
+  background-color: #f3f5f9;
+}
+
+.input-field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.button input {
+  display: block;
+  width: 100%;
+  border: 1px solid silver;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.button input:hover {
+  cursor: pointer;
+  background-color: silver;
+}
+
+form a {
+  width: 100%;
+  text-align: center;
+  font-size: 0.8rem;
+  padding-top: 2rem;
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+form a:hover {
+  text-decoration: underline;
+}
