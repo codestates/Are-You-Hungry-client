@@ -1,0 +1,78 @@
+/* .sidebar {
+  position: fixed;
+  height: 100vh;
+  background-color: rgb(165, 154, 141);
+  text-align: center;
+  width: 240px;
+} */
+
+.sidebar {
+  position: relative;
+  height: 100%;
+  background-color: rgb(165, 154, 141);
+  text-align: center;
+}
+
+.sidebar h2 {
+  text-transform: uppercase;
+  text-align: center;
+  cursor: default;
+  padding: 4rem 2rem;
+  margin: 0;
+}
+
+.main-nav,
+.sub-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.main-nav__item {
+  padding: 16px;
+  font-size: 22px;
+}
+
+.main-nav__item:hover .sub-nav {
+  display: block;
+  max-height: 200px;
+  padding: 12px 0 0 0;
+}
+
+.main-nav__item:hover .sub-nav a:hover {
+  color: white;
+}
+
+.sub-nav {
+  overflow: hidden;
+  max-height: 0;
+  transition: 0.4s ease-in-out;
+}
+
+.sub-nav__item {
+  padding: 8px 16px;
+  font-size: 1rem;
+}
+
+.sub-nav__item:last-child {
+  padding: 8px 16px 0 16px;
+}
+
+.main-nav__item a,
+.sub-nav__item a,
+.sign-out__btn a {
+  text-decoration: none;
+  color: black;
+}
+
+.sign-out__btn {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 3rem;
+}
+
+.sign-out__btn input:active {
+  color: white;
+}
