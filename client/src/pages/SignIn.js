@@ -2,13 +2,13 @@ import React from "react";
 import SideBar from "../components/SideBar";
 import "../styles/SignIn.css";
 
-const SignUp = () => {
+const SignIn = () => {
   return (
     <>
       <SideBar isLoggedIn={false} />
       <main class="main">
-        <form className="signup-form">
-          <h2>Sign Up</h2>
+        <form className="signin-form">
+          <h2>Sign In</h2>
           <div className="input-field">
             <label htmlFor="username">Username:</label>
             <input type="text" id="username" required />
@@ -17,22 +17,14 @@ const SignUp = () => {
             <label htmlFor="password">Password: </label>
             <input type="password" id="password" required />
           </div>
-          <div className="input-field">
-            <label htmlFor="email">Email: </label>
-            <input type="email" id="email" required />
-          </div>
-          <div className="input-field">
-            <label htmlFor="phone">Phone:</label>
-            <input type="tel" id="phone" required />
-          </div>
           <div className="button">
-            <input type="submit" value="Sign Up" />
+            <input type="submit" value="Sign In" />
           </div>
-          <a href="#">Already have an account?</a>
+          <a href="#">Don't have an account?</a>
         </form>
       </main>
     </>
   );
 };
 
-export default SignUp;
+export default SignIn;
