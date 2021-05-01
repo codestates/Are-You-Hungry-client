@@ -1,0 +1,8 @@
+.recipe-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  justify-items: center;
+  grid-row-gap: 16px;
+  margin-bottom: 32px;
+}

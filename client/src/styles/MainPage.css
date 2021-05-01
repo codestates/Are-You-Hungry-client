@@ -1,0 +1,17 @@
+.main-page {
+  display: grid;
+  grid-template-rows: 240px auto;
+}
+
+.searchBar {
+  grid-row-start: 1;
+  grid-row-end: span 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-list-grid {
+  grid-row-start: 2;
+  grid-row-end: span 1;
+}
