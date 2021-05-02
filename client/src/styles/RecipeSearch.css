@@ -1,6 +1,7 @@
 .main-page {
   display: grid;
   grid-template-rows: 240px auto;
+  width: 100%;
 }
 
 .searchBar {
@@ -9,9 +10,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
-.recipe-list-grid {
-  grid-row-start: 2;
-  grid-row-end: span 1;
+button {
+  padding: 8px;
 }

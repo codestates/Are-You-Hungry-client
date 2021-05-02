@@ -1,20 +1,27 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const LoggedOutNav = () => {
+const LoggedOutNav = ({ handleLogOut }) => {
   return (
     <>
       <nav>
         <ul className="main-nav">
           <li className="main-nav__item">
-            <a href="#">Home</a>
+            <Link to="/" className="link">
+              Home
+            </Link>
           </li>
           <li className="main-nav__item">
-            <a href="#">About</a>
+            <Link to="/about" className="link">
+              About
+            </Link>
           </li>
         </ul>
       </nav>
       <div className="sign-out__btn">
-        <a href="#">Sign In</a>
+        <Link to="/signin" className="link" onClick={handleLogOut}>
+          Sign In
+        </Link>
       </div>
     </>
   );

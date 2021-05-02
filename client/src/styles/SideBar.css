@@ -2,7 +2,7 @@
   position: fixed;
   background-color: rgb(165, 154, 141);
   text-align: center;
-  width: 240px;
+  width: 220px;
 }
 
 .sidebar h2 {
@@ -52,10 +52,21 @@
 }
 
 .main-nav__item a,
+.main-nav__item p,
 .sub-nav__item a,
 .sign-out__btn a {
   text-decoration: none;
   color: black;
+}
+
+.main-nav__item a:hover,
+.main-nav__item p:hover {
+  color: white;
+}
+
+.main-nav__item p {
+  margin: 0;
+  cursor: default;
 }
 
 .sign-out__btn {
@@ -65,6 +76,6 @@
   bottom: 3rem;
 }
 
-.sign-out__btn input:active {
+.sign-out__btn .link:hover {
   color: white;
 }
