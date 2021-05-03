@@ -1,30 +1,68 @@
-import React from "react";
-import SideBar from "../components/SideBar";
+import React, { useState } from "react";
+import { Link, withRouter } from "react-router-dom";
+import axios from "axios";
+
 import "../styles/SignIn.css";
 
-const SignIn = () => {
+const SignIn = (props) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    if (username && password) {
+      axios
+        .post(
+          "http://ec2-15-165-205-147.ap-northeast-2.compute.amazonaws.com:4000/signin",
+          {
+            username: username,
+            password: password,
+          }
+        )
+        .then((res) => {
+          props.onLogInSuccess(res.data.data);
+          props.history.push("/");
+        })
+        .catch((e) => {
+          console.log("Error in handleLogin");
+        });
+    }
+  };
+
   return (
-    <>
-      <SideBar isLoggedIn={false} />
-      <main class="main">
-        <form className="signin-form">
-          <h2>Sign In</h2>
-          <div className="input-field">
-            <label htmlFor="username">Username:</label>
-            <input type="text" id="username" required />
-          </div>
-          <div className="input-field">
-            <label htmlFor="password">Password: </label>
-            <input type="password" id="password" required />
-          </div>
-          <div className="button">
-            <input type="submit" value="Sign In" />
-          </div>
-          <a href="#">Don't have an account?</a>
-        </form>
-      </main>
-    </>
+    <main className="main">
+      <form
+        className="signup-form"
+        action="#"
+        onSubmit={(e) => e.preventDefault()}
+      >
+        <h2>Sign In</h2>
+        <div className="input-field">
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div className="input-field">
+          <label htmlFor="password">Password: </label>
+          <input
+            type="password"
+            id="password"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button type="submit" className="button" onClick={handleLogin}>
+          Sign In
+        </button>
+        <Link to="/signup" className="link">
+          Don't have an account?
+        </Link>
+      </form>
+    </main>
   );
 };
 
-export default SignIn;
+export default withRouter(SignIn);

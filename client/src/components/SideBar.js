@@ -1,13 +1,18 @@
 import React from "react";
+
 import LoggedInNav from "./LoggedInNav";
 import LoggedOutNav from "./LoggedOutNav";
 import "../styles/SideBar.css";
 
-const SideBar = ({ isLoggedIn }) => {
+const SideBar = ({ isLoggedIn, handleLogOut }) => {
   return (
     <header className="sidebar">
       <h2>Hungry?</h2>
-      {isLoggedIn ? <LoggedInNav /> : <LoggedOutNav />}
+      {isLoggedIn ? (
+        <LoggedInNav handleLogOut={handleLogOut} />
+      ) : (
+        <LoggedOutNav handleLogOut={handleLogOut} />
+      )}
     </header>
   );
 };

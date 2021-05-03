@@ -1,28 +1,28 @@
 .main {
-  background-color: #f3f5f9;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.main form {
+.main .signup-form {
   width: 400px;
+  min-width: 400px;
 }
 
-.main form h2 {
+.main .signup-form h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
   text-align: center;
 }
 
-form .input-field {
+.signup-form .input-field {
   width: 100%;
 }
 
-.input-field input[type="text"],
-.input-field input[type="email"],
-.input-field input[type="password"],
-.input-field input[type="tel"] {
+.signup-form .input-field input[type="text"],
+.signup-form .input-field input[type="email"],
+.signup-form .input-field input[type="password"],
+.signup-form .input-field input[type="tel"] {
   display: block;
   border-radius: 5px;
   width: 100%;
@@ -33,13 +33,13 @@ form .input-field {
   background-color: #f3f5f9;
 }
 
-.input-field label {
+.signup-form .input-field label {
   display: block;
   margin-bottom: 0.5rem;
   font-size: 0.8rem;
 }
 
-.button input {
+.signup-form .button {
   display: block;
   width: 100%;
   border: 1px solid silver;
@@ -47,12 +47,12 @@ form .input-field {
   border-radius: 5px;
 }
 
-.button input:hover {
+.signup-form .button:hover {
   cursor: pointer;
   background-color: silver;
 }
 
-form a {
+.signup-form .link {
   width: 100%;
   text-align: center;
   font-size: 0.8rem;
@@ -62,6 +62,6 @@ form a {
   display: block;
 }
 
-form a:hover {
+.signup-form .link:hover {
   text-decoration: underline;
 }

@@ -1,0 +1,18 @@
+.main-page {
+  display: grid;
+  grid-template-rows: 240px auto;
+  width: 100%;
+}
+
+.searchBar {
+  grid-row-start: 1;
+  grid-row-end: span 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+button {
+  padding: 8px;
+}

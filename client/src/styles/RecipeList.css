@@ -1,0 +1,29 @@
+.recipe-list-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  justify-content: center;
+  justify-items: center;
+  grid-row-gap: 16px;
+  margin-bottom: 32px;
+}
+
+.display-no-results {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1150px) {
+  .recipe-list-grid {
+    grid-template-columns: repeat(2, minmax(300px, 350px));
+  }
+}
+
+@media only screen and (max-width: 855px) {
+  .recipe-list-grid {
+    grid-template-columns: 350px;
+  }
+}
