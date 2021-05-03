@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { withRouter } from "react-router";
-import axios from "axios";
 
 const Recipe = (props) => {
   const food = props.match.params.foodname;
-  const url =
-    "http://ec2-15-165-205-147.ap-northeast-2.compute.amazonaws.com:4000/search/?foodname=";
 
   return (
     <main className="main">

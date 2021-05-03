@@ -41,11 +41,11 @@ const App = () => {
         <Route exact path="/recipe">
           <RecipeSearch accessToken={accessToken} />
         </Route>
+        <Route exact path="/recipe/favorites">
+          <Favorites accessToken={accessToken} userInfo={userInfo} />
+        </Route>
         <Route path="/recipe/:foodname">
           <Recipe accessToken={accessToken} />
-        </Route>
-        <Route path="/recipe/favorites">
-          <Favorites accessToken={accessToken} />
         </Route>
         <Route path="/mypage">
           <MyPage accessToken={accessToken} userInfo={userInfo} />

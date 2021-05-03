@@ -17,7 +17,7 @@ const RecipeList = ({ recipes }) => {
   if (recipes.length === 0) {
     return (
       <div className="display-no-results">
-        <h2>No results found!</h2>
+        <h2>No recipes found!</h2>
       </div>
     );
   }
