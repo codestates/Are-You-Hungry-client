@@ -13,7 +13,11 @@ const RecipeSearch = (props) => {
     if (searchTerm) {
       axios
         .get(
-          `http://ec2-15-165-205-147.ap-northeast-2.compute.amazonaws.com:4000/search/?foodname=${searchTerm}`
+          `http://ec2-15-165-205-147.ap-northeast-2.compute.amazonaws.com:4000/search?foodname=${searchTerm}`,
+          {
+            withCredentials: true,
+            "Access-Control-Allow-Origin": "http://localhost:3000",
+          }
         )
         .then((res) => {
           setRecipes(res.data.data.recipes);
