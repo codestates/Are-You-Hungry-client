@@ -20,7 +20,7 @@ const SideBar = ({ isLoggedIn, handleLogOut }) => {
                 <p href="#">My Recipes</p>
                 <ul className="sub-nav">
                   <li className="sub-nav__item">
-                    <Link to="/favorites" className="link">
+                    <Link to="/recipe/favorites" className="link">
                       Favorite recipes
                     </Link>
                   </li>
