@@ -5,7 +5,7 @@ const MyPage = (props) => {
   return (
     <main className="main mypage">
       <h1>This is you</h1>
-      <section class="wrapper">
+      <section className="wrapper">
         <div className="userprop">
           <span className="userkey">USERNAME</span>
           <span className="uservalue">{props.userInfo.username}</span>
