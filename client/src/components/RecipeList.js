@@ -3,33 +3,37 @@ import RecipeCard from "./RecipeCard";
 import "../styles/RecipeList.css";
 
 const RecipeList = ({ recipes }) => {
-  if (recipes) {
-    if (recipes.length === 0) {
-      return (
-        <div className="initial">
-          <h2>Look for a recipe!</h2>
-        </div>
-      );
-    }
-
-    const renderedRecipeCards = recipes.map((recipe) => {
-      return <RecipeCard key={recipe.food_id} recipe={recipe} />;
-    });
-
+  // initial render
+  if (recipes[0] === "initial") {
     return (
-      <>
-        <p style={{ textAlign: "center" }}>
-          {renderedRecipeCards.length} recipes found!
-        </p>
-        <div className="recipe-list-grid">{renderedRecipeCards}</div>
-      </>
+      <div className="initial">
+        <h2>Welcome!</h2>
+        <p>What would you like to eat today?</p>
+      </div>
     );
   }
 
+  // failed to fetch recipes
+  if (recipes.length === 0) {
+    return (
+      <div className="display-no-results">
+        <h2>No results found!</h2>
+      </div>
+    );
+  }
+
+  // successfully fetched recipes
+  const renderedRecipeCards = recipes.map((recipe) => {
+    return <RecipeCard key={recipe.food_id} recipe={recipe} />;
+  });
+
   return (
-    <div className="display-no-results">
-      <h2>No results found!</h2>
-    </div>
+    <>
+      <p style={{ textAlign: "center" }}>
+        {renderedRecipeCards.length} recipes found!
+      </p>
+      <div className="recipe-list-grid">{renderedRecipeCards}</div>
+    </>
   );
 };
 

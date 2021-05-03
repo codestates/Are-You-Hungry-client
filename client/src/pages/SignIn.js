@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 
-import "../styles/SignIn.css";
+import "../styles/Sign.css";
 
 const SignIn = (props) => {
   const [username, setUsername] = useState("");
@@ -29,12 +29,8 @@ const SignIn = (props) => {
   };
 
   return (
-    <main className="main">
-      <form
-        className="signup-form"
-        action="#"
-        onSubmit={(e) => e.preventDefault()}
-      >
+    <main className="main sign">
+      <form action="#" onSubmit={(e) => e.preventDefault()}>
         <h2>Sign In</h2>
         <div className="input-field">
           <label htmlFor="username">Username:</label>
