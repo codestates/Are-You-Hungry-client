@@ -1,8 +1,11 @@
 import React from "react";
-import SideBar from "../../components/SideBar";
 
 const Favorites = () => {
-  return <main>Gotta get to work!</main>;
+  return (
+    <main className="main">
+      <h1>My Favorite Recipes</h1>
+    </main>
+  );
 };
 
 export default Favorites;

@@ -1,0 +1,29 @@
+.mypage {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+}
+
+.wrapper {
+  width: 70%;
+  text-align: center;
+}
+
+.userprop {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.userkey {
+  display: inline-block;
+  width: 25%;
+}
+
+.uservalue {
+  display: inline-block;
+  width: 25%;
+}

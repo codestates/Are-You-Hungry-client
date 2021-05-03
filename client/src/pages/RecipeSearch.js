@@ -7,16 +7,18 @@ import "../styles/RecipeSearch.css";
 
 const RecipeSearch = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchKey, setSearchKey] = useState("username");
   const [recipes, setRecipes] = useState([]);
 
   const handleSearch = () => {
     if (searchTerm) {
       axios
         .get(
-          `http://ec2-15-165-205-147.ap-northeast-2.compute.amazonaws.com:4000/search?foodname=${searchTerm}`,
+          `http://ec2-15-165-205-147.ap-northeast-2.compute.amazonaws.com:4000/search?${searchKey}=${searchTerm}`,
           {
-            withCredentials: true,
-            "Access-Control-Allow-Origin": "http://localhost:3000",
+            headers: {
+              Authorization: `Bearer ${props.accessToken}`,
+            },
           }
         )
         .then((res) => {
@@ -28,9 +30,18 @@ const RecipeSearch = (props) => {
     }
   };
 
+  const handleKeyChange = (e) => {
+    setSearchKey(e.target.value);
+  };
+
   return (
     <main className="main main-page">
       <form className="searchBar" onSubmit={(e) => e.preventDefault()}>
+        <select onChange={handleKeyChange}>
+          <option value="username">작성자</option>
+          <option value="item">재료이름</option>
+          <option value="foodname">요리 이름</option>
+        </select>
         <input type="text" onChange={(e) => setSearchTerm(e.target.value)} />
         <button type="submit" onClick={handleSearch}>
           Search
