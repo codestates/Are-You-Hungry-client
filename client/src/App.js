@@ -5,12 +5,13 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import RecipeSearch from "./pages/RecipeSearch";
 import Recipe from "./pages/Recipe";
+import Favorites from "./pages/MyRecipes/Favorites";
 
 import SideBar from "./components/SideBar";
 import "./App.css";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState([]);
 
   const onLogInSuccess = (userinfo) => {
@@ -39,7 +40,9 @@ const App = () => {
         <Route path="/recipe/:foodname">
           <Recipe />
         </Route>
-        <Route path="/recipe/favorites"></Route>
+        <Route path="/recipe/favorites">
+          <Favorites />
+        </Route>
         <Route
           exact
           path="/"
