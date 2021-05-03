@@ -1,12 +1,25 @@
 import React from "react";
-import SideBar from "../components/SideBar";
+import "../styles/MyPage.css";
 
-const MyPage = () => {
+const MyPage = (props) => {
   return (
-    <>
-      <SideBar />
-      {/* <MyPage /> Need to fill in with actual HTML */}
-    </>
+    <main className="main mypage">
+      <h1>This is you</h1>
+      <section class="wrapper">
+        <div className="userprop">
+          <span className="userkey">USERNAME</span>
+          <span className="uservalue">{props.userInfo.username}</span>
+        </div>
+        <div className="userprop">
+          <span className="userkey">EMAIL</span>
+          <span className="uservalue">{props.userInfo.email}</span>
+        </div>
+        <div className="userprop">
+          <span className="userkey">PHONE No.</span>
+          <span className="uservalue">{props.userInfo.phone}</span>
+        </div>
+      </section>
+    </main>
   );
 };
 

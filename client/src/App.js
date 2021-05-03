@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 
 import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
+import SignUp from "./pages/Signup";
 import RecipeSearch from "./pages/RecipeSearch";
 import Recipe from "./pages/Recipe";
 import Favorites from "./pages/MyRecipes/Favorites";
+import MyPage from "./pages/MyPage";
 
 import SideBar from "./components/SideBar";
 import "./App.css";
@@ -13,15 +14,18 @@ import "./App.css";
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState([]);
+  const [accessToken, setAccessToken] = useState("");
 
-  const onLogInSuccess = (userinfo) => {
+  const onLogInSuccess = (data) => {
     setIsLoggedIn((prev) => !prev);
-    setUserInfo(userInfo);
+    setUserInfo(data.userinfo);
+    setAccessToken(data.accessToken);
   };
 
   const handleLogOut = () => {
     setUserInfo([]);
     setIsLoggedIn(false);
+    setAccessToken("");
   };
 
   return (
@@ -35,13 +39,16 @@ const App = () => {
           <SignUp />
         </Route>
         <Route exact path="/recipe">
-          <RecipeSearch />
+          <RecipeSearch accessToken={accessToken} />
         </Route>
         <Route path="/recipe/:foodname">
-          <Recipe />
+          <Recipe accessToken={accessToken} />
         </Route>
         <Route path="/recipe/favorites">
-          <Favorites />
+          <Favorites accessToken={accessToken} />
+        </Route>
+        <Route path="/mypage">
+          <MyPage accessToken={accessToken} userInfo={userInfo} />
         </Route>
         <Route
           exact
