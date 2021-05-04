@@ -1,11 +1,11 @@
 .recipe-list-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(300px, 1fr));
-  grid-template-rows: repeat(auto-fit, minmax(200px, 220px));
   justify-content: center;
   justify-items: center;
   grid-row-gap: 16px;
   margin-bottom: 32px;
+  grid-auto-rows: 240px;
 }
 
 .initial,

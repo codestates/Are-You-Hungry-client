@@ -63,25 +63,25 @@ const MyPage = (props) => {
             <h2>회원정보 수정</h2>
             <input
               type="text"
-              placeholder={`현재 아이디:${username}`}
+              placeholder={`현재 아이디: ${username}`}
               onChange={(e) => setNewUsername(e.target.value)}
               required
             />
             <input
               type="password"
-              placeholder={`현재 비밀번호:${password}`}
+              placeholder={`현재 비밀번호: ${password}`}
               onChange={(e) => setNewPassword(e.target.value)}
               required
             />
             <input
               type="email"
-              placeholder={`현재 이메일:${email}`}
+              placeholder={`현재 이메일: ${email}`}
               onChange={(e) => setNewEmail(e.target.value)}
               required
             />
             <input
               type="tel"
-              placeholder={`현재 전화번호:${phone}`}
+              placeholder={`현재 전화번호: ${phone}`}
               onChange={(e) => setNewPhone(e.target.value)}
               required
             />

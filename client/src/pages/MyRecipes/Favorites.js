@@ -23,7 +23,10 @@ const Favorites = (props) => {
       )
       .then((res) => {
         if (res.data.data) {
-          setFavs(res.data.data);
+          const dataWithIsOn = res.data.data.map((recipe) => {
+            return { ...recipe, isOn: true };
+          });
+          setFavs(dataWithIsOn);
         }
         setIsLoading(false);
       })

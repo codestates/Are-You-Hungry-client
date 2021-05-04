@@ -42,7 +42,7 @@ const SideBar = ({ isLoggedIn, initUserState, accessToken }) => {
                     </Link>
                   </li>
                   <li className="sub-nav__item">
-                    <Link to="/my-recipes" className="link">
+                    <Link to="/recipe/myrecipes" className="link">
                       My recipes
                     </Link>
                   </li>
