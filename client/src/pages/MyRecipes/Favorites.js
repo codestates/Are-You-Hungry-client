@@ -22,13 +22,15 @@ const Favorites = (props) => {
         }
       )
       .then((res) => {
-        setFavs(res.data);
+        if (res.data.data) {
+          setFavs(res.data.data);
+        }
         setIsLoading(false);
       })
       .catch((e) => console.log("Error in fetchFavs!"));
   };
 
-  useEffect(fetchFavs, []);
+  useEffect(fetchFavs, [accessToken, username]);
 
   return (
     <main className="main favorites">

@@ -20,6 +20,7 @@ const RecipeCard = ({ recipe }) => {
           레시피 보기
         </Link>
         <button
+          id="recipe-heart"
           className={recipe.isOn ? "heart liked-heart" : "heart"}
         ></button>
       </div>
