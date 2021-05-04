@@ -1,0 +1,103 @@
+.InputIgr {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: row;
+}
+
+.RecipeArea {
+  flex: 1 0 0;
+}
+
+.RecipebuttonArea {
+  height: 50px;
+  flex: 0 0 1;
+}
+
+.Button {
+  height: 40px;
+}
+
+.IboxFrame {
+  display: flex;
+  flex: 0 0 1;
+  flex-direction: column;
+  border: solid 1px yellow;
+}
+
+.Addigr {
+  display: flex;
+  height: 100%;
+  width: 50px;
+}
+
+.Span {
+  flex: 1 0 1;
+  vertical-align: center;
+}
+
+.Row {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: solid red 1px;
+}
+
+.Input {
+  flex: 1 0 0;
+}
+
+.Main {
+  grid-area: main;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: solid red 1px;
+}
+.Image {
+  flex: 1 0 0;
+  border: solid green 1px;
+}
+.Area {
+  display: flex;
+  flex: 2 0 0;
+  flex-direction: row;
+  border: solid blue 1px;
+}
+
+.Area2 {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  border: solid blue 1px;
+}
+.Area3 {
+  display: flex;
+  flex: 4 0 0;
+  flex-direction: column;
+  border: solid blue 1px;
+}
+
+.UpperInputBox {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+  border: solid green 1px;
+}
+.DecsBox {
+  height: 100%;
+  flex: 1 0 0;
+}
+.IngredientsBox {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: row;
+}
+.RecipeBox {
+  flex-direction: row;
+  display: flex;
+  flex: 0 0 1;
+  border: solid purple 1px;
+}

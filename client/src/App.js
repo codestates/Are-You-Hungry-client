@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/Signup";
 import RecipeSearch from "./pages/RecipeSearch";
 import Recipe from "./pages/Recipe";
 import Favorites from "./pages/MyRecipes/Favorites";
-import MyPage from "./pages/MyPage";
+import AddRecipe from "./pages/MyRecipes/AddRecipe";
+import MyPage from "./pages/Mypage";
 import Delete from "./pages/Delete";
 
 import SideBar from "./components/SideBar";
@@ -53,6 +54,9 @@ const App = () => {
         </Route>
         <Route exact path="/recipe/favorites">
           <Favorites accessToken={accessToken} userInfo={userInfo} />
+        </Route>
+        <Route exact path="/add-new-recipe">
+          <AddRecipe accessToken={accessToken} userInfo={userInfo} />
         </Route>
         <Route path="/recipe/:foodname">
           <Recipe accessToken={accessToken} />
