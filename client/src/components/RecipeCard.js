@@ -13,7 +13,7 @@ const RecipeCard = ({ recipe }) => {
       <div className="image__overlay image__overlay-blur">
         <h2 className="recipe-name">{recipe.food_name}</h2>
         <Link
-          to={`/recipe/${recipe.food_name}`}
+          to={`/recipe/${recipe.food_id}`}
           food={recipe.food_name}
           className="recipe-link"
         >

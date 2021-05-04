@@ -9,7 +9,11 @@ const Delete = (props) => {
   const [passed, setPassed] = useState(false);
   const [password, setPassword] = useState("");
 
-  const { accessToken } = props;
+  const { accessToken, isLoggedIn } = props;
+
+  if (!isLoggedIn) {
+    props.history.push("/");
+  }
 
   const testPassword = () => {
     axios
@@ -38,7 +42,7 @@ const Delete = (props) => {
         },
         {
           headers: {
-            Authorization: "Bearer " + props.accessToken,
+            Authorization: "Bearer " + accessToken,
           },
         }
       )

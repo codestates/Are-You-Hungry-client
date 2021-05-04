@@ -10,6 +10,8 @@ const MyPage = (props) => {
   const [passed, setPassed] = useState(false);
   const [password, setPassword] = useState("");
 
+  const { username, email, phone } = props.userInfo;
+
   const [newUsername, setNewUsername] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newPhone, setNewPhone] = useState("");
@@ -35,20 +37,22 @@ const MyPage = (props) => {
   };
 
   const onEdit = () => {
-    axios.patch(
-      "http://ec2-15-165-205-147.ap-northeast-2.compute.amazonaws.com:4000/user",
-      {
-        username: newUsername,
-        password: newPassword,
-        email: newEmail,
-        phone: newPhone,
-      },
-      {
-        headers: {
-          Authorization: "Bearer " + accessToken,
+    if (newUsername && newPassword && newEmail && newPhone) {
+      axios.patch(
+        "http://ec2-15-165-205-147.ap-northeast-2.compute.amazonaws.com:4000/user",
+        {
+          username: newUsername,
+          password: newPassword,
+          email: newEmail,
+          phone: newPhone,
         },
-      }
-    );
+        {
+          headers: {
+            Authorization: "Bearer " + accessToken,
+          },
+        }
+      );
+    }
   };
 
   return (
@@ -59,25 +63,25 @@ const MyPage = (props) => {
             <h2>회원정보 수정</h2>
             <input
               type="text"
-              placeholder="새 아이디"
+              placeholder={`현재 아이디: ${username}`}
               onChange={(e) => setNewUsername(e.target.value)}
               required
             />
             <input
               type="password"
-              placeholder="새 비밀번호"
+              placeholder={`현재 비밀번호: ${password}`}
               onChange={(e) => setNewPassword(e.target.value)}
               required
             />
             <input
               type="email"
-              placeholder="새 이메일"
+              placeholder={`현재 이메일: ${email}`}
               onChange={(e) => setNewEmail(e.target.value)}
               required
             />
             <input
               type="tel"
-              placeholder="새 전화번호"
+              placeholder={`현재 전화번호: ${phone}`}
               onChange={(e) => setNewPhone(e.target.value)}
               required
             />
