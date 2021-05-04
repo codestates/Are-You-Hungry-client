@@ -17,7 +17,8 @@ const SideBar = ({ isLoggedIn, initUserState, accessToken }) => {
       )
       .then((res) => {
         initUserState();
-      });
+      })
+      .catch((e) => console.log(e));
   };
 
   return (
@@ -63,9 +64,15 @@ const SideBar = ({ isLoggedIn, initUserState, accessToken }) => {
       </nav>
       {
         <div className="sign-out__btn">
-          <Link to="/" className="link" onClick={onLogOut}>
-            {isLoggedIn ? "Sign Out" : "Sign In"}
-          </Link>
+          {isLoggedIn ? (
+            <Link to="/" className="link" onClick={onLogOut}>
+              Sign Out
+            </Link>
+          ) : (
+            <Link to="/" className="link" onClick={onLogOut}>
+              Sign In
+            </Link>
+          )}
         </div>
       }
     </header>

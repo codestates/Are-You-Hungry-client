@@ -65,6 +65,7 @@ const App = () => {
             accessToken={accessToken}
             userInfo={userInfo}
             initUserState={initUserState}
+            isLoggedIn={isLoggedIn}
           />
         </Route>
         <Route
