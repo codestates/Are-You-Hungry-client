@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+import axios from "axios";
 
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/Signup";
@@ -7,6 +8,7 @@ import RecipeSearch from "./pages/RecipeSearch";
 import Recipe from "./pages/Recipe";
 import Favorites from "./pages/MyRecipes/Favorites";
 import MyPage from "./pages/MyPage";
+import Delete from "./pages/Delete";
 
 import SideBar from "./components/SideBar";
 import "./App.css";
@@ -22,7 +24,7 @@ const App = () => {
     setAccessToken(data.accessToken);
   };
 
-  const handleLogOut = () => {
+  const initUserState = () => {
     setUserInfo([]);
     setIsLoggedIn(false);
     setAccessToken("");
@@ -30,7 +32,11 @@ const App = () => {
 
   return (
     <>
-      <SideBar isLoggedIn={isLoggedIn} handleLogOut={handleLogOut} />
+      <SideBar
+        isLoggedIn={isLoggedIn}
+        initUserState={initUserState}
+        accessToken={accessToken}
+      />
       <Switch>
         <Route exact path="/signin">
           <SignIn onLogInSuccess={onLogInSuccess} />
@@ -39,7 +45,11 @@ const App = () => {
           <SignUp />
         </Route>
         <Route exact path="/recipe">
-          <RecipeSearch accessToken={accessToken} />
+          <RecipeSearch
+            accessToken={accessToken}
+            isLoggedIn={isLoggedIn}
+            initUserState={initUserState}
+          />
         </Route>
         <Route exact path="/recipe/favorites">
           <Favorites accessToken={accessToken} userInfo={userInfo} />
@@ -49,6 +59,13 @@ const App = () => {
         </Route>
         <Route path="/mypage">
           <MyPage accessToken={accessToken} userInfo={userInfo} />
+        </Route>
+        <Route path="/delete">
+          <Delete
+            accessToken={accessToken}
+            userInfo={userInfo}
+            initUserState={initUserState}
+          />
         </Route>
         <Route
           exact

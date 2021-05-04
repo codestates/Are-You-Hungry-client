@@ -1,9 +1,25 @@
 import React from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 import "../styles/SideBar.css";
 
-const SideBar = ({ isLoggedIn, handleLogOut }) => {
+const SideBar = ({ isLoggedIn, initUserState, accessToken }) => {
+  const onLogOut = () => {
+    axios
+      .get(
+        "http://ec2-15-165-205-147.ap-northeast-2.compute.amazonaws.com:4000/signout",
+        {
+          headers: {
+            Authorization: "Bearer " + accessToken,
+          },
+        }
+      )
+      .then((res) => {
+        initUserState();
+      });
+  };
+
   return (
     <header className="sidebar">
       <h2>Hungry?</h2>
@@ -47,7 +63,7 @@ const SideBar = ({ isLoggedIn, handleLogOut }) => {
       </nav>
       {
         <div className="sign-out__btn">
-          <Link to="/" className="link" onClick={handleLogOut}>
+          <Link to="/" className="link" onClick={onLogOut}>
             {isLoggedIn ? "Sign Out" : "Sign In"}
           </Link>
         </div>

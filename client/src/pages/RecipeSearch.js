@@ -7,10 +7,15 @@ import "../styles/RecipeSearch.css";
 
 axios.defaults.withCredentials = true;
 
-const RecipeSearch = ({ accessToken }) => {
+const RecipeSearch = ({ accessToken, isLoggedIn, history, initUserState }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchKey, setSearchKey] = useState("username");
   const [recipes, setRecipes] = useState(["initial"]);
+
+  if (!isLoggedIn) {
+    initUserState();
+    history.push("/");
+  }
 
   const handleSearch = () => {
     if (searchTerm) {
@@ -24,9 +29,13 @@ const RecipeSearch = ({ accessToken }) => {
           }
         )
         .then((res) => {
-          setRecipes(res.data.data.recipes);
+          if (res.data.data.recipes) {
+            setRecipes(res.data.data.recipes);
+          } else {
+            setRecipes([]);
+          }
         })
-        .catch((e) => console.log(Error in handleSearch));
+        .catch((e) => console.log("Error in handleSearch"));
     }
   };
 
@@ -34,99 +43,6 @@ const RecipeSearch = ({ accessToken }) => {
     const stateHooks = { key: setSearchKey, term: setSearchTerm };
     stateHooks[value](e.target.value);
   };
-
-  // const hardCodedRecipes = [
-  //   {
-  //     food_img:
-  //       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80",
-  //     food_name: "샐러드",
-  //     isOn: true,
-  //   },
-  //   {
-  //     food_img:
-  //       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80",
-  //     food_name: "샐러드",
-  //     isOn: true,
-  //   },
-  //   {
-  //     food_img:
-  //       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80",
-  //     food_name: "샐러드",
-  //     isOn: true,
-  //   },
-  //   {
-  //     food_img:
-  //       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80",
-  //     food_name: "샐러드",
-  //     isOn: true,
-  //   },
-  //   {
-  //     food_img:
-  //       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80",
-  //     food_name: "샐러드",
-  //     isOn: true,
-  //   },
-  //   {
-  //     food_img:
-  //       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80",
-  //     food_name: "샐러드",
-  //     isOn: true,
-  //   },
-  //   {
-  //     food_img:
-  //       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80",
-  //     food_name: "샐러드",
-  //     isOn: true,
-  //   },
-  //   {
-  //     food_img:
-  //       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80",
-  //     food_name: "샐러드",
-  //     isOn: true,
-  //   },
-  //   {
-  //     food_img:
-  //       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80",
-  //     food_name: "샐러드",
-  //     isOn: true,
-  //   },
-  //   {
-  //     food_img:
-  //       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80",
-  //     food_name: "샐러드",
-  //     isOn: true,
-  //   },
-  //   {
-  //     food_img:
-  //       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80",
-  //     food_name: "샐러드",
-  //     isOn: true,
-  //   },
-  //   {
-  //     food_img:
-  //       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80",
-  //     food_name: "샐러드",
-  //     isOn: true,
-  //   },
-  //   {
-  //     food_img:
-  //       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80",
-  //     food_name: "샐러드",
-  //     isOn: true,
-  //   },
-  //   {
-  //     food_img:
-  //       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80",
-  //     food_name: "샐러드",
-  //     isOn: true,
-  //   },
-  //   {
-  //     food_img:
-  //       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80",
-  //     food_name: "샐러드",
-  //     isOn: true,
-  //   },
-  // ];
 
   return (
     <main className="main recipe-search">
