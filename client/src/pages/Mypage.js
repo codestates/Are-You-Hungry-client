@@ -1,23 +1,28 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "../styles/MyPage.css";
 import "../styles/UserInfoEdit.css";
 import "../styles/TestPassword.css";
 
 import axios from "axios";
 
-const MyPage = (props) => {
+const MyPage = ({ userInfo, initUserState, history }) => {
+  const accessToken = sessionStorage.getItem("accessToken");
+
+  if (!accessToken) {
+    initUserState();
+    history.push("/");
+  }
+
   const [passed, setPassed] = useState(false);
   const [password, setPassword] = useState("");
 
-  const { username, email, phone } = props.userInfo;
+  const { username = "", email = "", phone = "" } = userInfo;
 
   const [newUsername, setNewUsername] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newPhone, setNewPhone] = useState("");
   const [newEmail, setNewEmail] = useState("");
-
-  const accessToken = props.accessToken;
 
   const testPassword = () => {
     axios
@@ -119,4 +124,4 @@ const MyPage = (props) => {
   );
 };
 
-export default MyPage;
+export default withRouter(MyPage);

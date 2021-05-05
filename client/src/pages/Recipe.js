@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { withRouter } from "react-router";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
 
 import "../styles/Recipe.css";
 
-const Recipe = (props) => {
-  const food_id = props.match.params.food_id;
-  const { accessToken } = props;
+const Recipe = ({ match, initUserState, history }) => {
+  const food_id = match.params.food_id;
+
+  const accessToken = sessionStorage.getItem("accessToken");
+
+  if (!accessToken) {
+    initUserState();
+    history.push("/");
+  }
+
   const [foodInfo, setFoodInfo] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [instructions, setInstructions] = useState([]);
@@ -23,7 +30,6 @@ const Recipe = (props) => {
         }
       )
       .then((res) => {
-        console.log(res.data.data.Ingredients);
         if (res.data.data.Food_info) {
           setFoodInfo(res.data.data.Food_info);
           setIngredients(res.data.data.Ingredients);
@@ -37,9 +43,6 @@ const Recipe = (props) => {
   };
 
   useEffect(fetchRecipe, []);
-  useEffect(() => {
-    console.log(foodInfo);
-  }, [foodInfo]);
 
   return (
     <main className="main recipe-page">

@@ -7,12 +7,14 @@ import "../styles/RecipeSearch.css";
 
 axios.defaults.withCredentials = true;
 
-const RecipeSearch = ({ accessToken, isLoggedIn, history, initUserState }) => {
+const RecipeSearch = ({ history, initUserState }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchKey, setSearchKey] = useState("username");
   const [recipes, setRecipes] = useState(["initial"]);
 
-  if (!isLoggedIn) {
+  const accessToken = sessionStorage.getItem("accessToken");
+
+  if (!accessToken) {
     initUserState();
     history.push("/");
   }

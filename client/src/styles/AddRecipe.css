@@ -72,6 +72,7 @@
   flex: 1 0 0;
   flex-direction: column;
   border: solid blue 1px;
+  padding: 16px;
 }
 .Area3 {
   display: flex;
@@ -85,6 +86,7 @@
   display: flex;
   flex-direction: column;
   border: solid green 1px;
+  padding: 16px;
 }
 .DecsBox {
   height: 100%;
@@ -100,4 +102,33 @@
   display: flex;
   flex: 0 0 1;
   border: solid purple 1px;
+}
+.input-box {
+  display: flex;
+  margin-bottom: 16px;
+}
+.input-box:last-child {
+  margin-bottom: 0;
+}
+.input-label {
+  width: 20%;
+}
+.input-area {
+  width: 50%;
+}
+.input-area select {
+  width: 100%;
+}
+.input-area input[type="text"],
+.input-area input[type="number"] {
+  width: 100%;
+}
+.summary {
+  width: 50%;
+}
+.summary-label {
+  width: 10%;
+}
+.summary-area {
+  width: 100%;
 }

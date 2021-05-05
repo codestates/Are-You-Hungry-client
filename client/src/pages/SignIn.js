@@ -4,7 +4,13 @@ import axios from "axios";
 
 import "../styles/Sign.css";
 
-const SignIn = (props) => {
+const SignIn = ({ onLogInSuccess, history }) => {
+  const accessToken = sessionStorage.getItem("accessToken");
+
+  if (accessToken) {
+    history.push("/");
+  }
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,8 +25,8 @@ const SignIn = (props) => {
           }
         )
         .then((res) => {
-          props.onLogInSuccess(res.data.data);
-          props.history.push("/");
+          onLogInSuccess(res.data.data);
+          history.push("/");
         })
         .catch((e) => {
           console.log("Error in handleLogin");

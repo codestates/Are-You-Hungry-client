@@ -1,8 +1,15 @@
 import React, { useState } from "react";
-import SideBar from "../../components/SideBar";
+import { withRouter } from "react-router-dom";
 import "../../styles/AddRecipe.css";
 
-function AddRecipe() {
+function AddRecipe({ initUserState, history }) {
+  const accessToken = sessionStorage.getItem("accessToken");
+
+  if (!accessToken) {
+    initUserState();
+    history.push("/");
+  }
+
   const [Recipe, SetRecipe] = useState([
     {
       cooking_no: 0,
@@ -15,19 +22,20 @@ function AddRecipe() {
     { name: "test", type: "test1", cap: "test2" },
   ]);
   const [Isaddigr, setisaddigr] = useState(false);
-  const [addstep, setaddstep] = useState(false);
-  const [foodname, setfoodname] = useState("");
-  const [level, setlevel] = useState("");
-  const [cooking_time, settime] = useState("");
-  const [nation, setnation] = useState("");
-  const [type, settype] = useState("");
-  const [qnt, setqnt] = useState("");
-  const [calorie, setcalorie] = useState("");
-  const [name, setname] = useState("");
-  const [itype, setitype] = useState("");
-  const [cap, setcap] = useState("");
-  const [step, setstep] = useState("");
-  const [summary, setsummary] = useState("");
+  const [addStep, setAddStep] = useState(false);
+  const [name, setName] = useState("");
+  const [itype, setItype] = useState("");
+  const [cap, setCap] = useState("");
+  const [step, setStep] = useState("");
+  const [summary, setSummary] = useState("");
+
+  const [foodName, setFoodName] = useState("");
+  const [level, setLevel] = useState("");
+  const [time, setTime] = useState("");
+  const [nation, setNation] = useState("");
+  const [type, setType] = useState("");
+  const [qnt, setQnt] = useState("");
+  const [calorie, setCalorie] = useState("");
 
   function Writeigr() {
     return (
@@ -37,30 +45,30 @@ function AddRecipe() {
           placeholder={"재료명"}
           objkey={"foodname"}
           value={name}
-          func={setname}
+          func={setName}
         />
         <InputBox
           type={"종류"}
           placeholder={"종류"}
           objkey={"level"}
           value={itype}
-          func={setitype}
+          func={setItype}
         />
         <InputBox
           type={"용량"}
           placeholder={"용량"}
           objkey={"cooking_time"}
           value={cap}
-          func={setcap}
+          func={setCap}
         />
       </div>
     );
   }
   function getigr() {
     SetIngrdients([...Ingredients, { name, type: itype, cap }]);
-    setname("");
-    setitype("");
-    setcap("");
+    setName("");
+    setItype("");
+    setCap("");
     setisaddigr(!Isaddigr);
   }
   function getrecipe() {
@@ -73,15 +81,15 @@ function AddRecipe() {
         step_tip: "",
       },
     ]);
-    setstep("");
-    setaddstep(!addstep);
+    setStep("");
+    setAddStep(!addStep);
   }
 
   function get() {
     let Food_info = {
-      foodname,
+      foodName,
       level,
-      cooking_time,
+      time,
       nation,
       type,
       qnt,
@@ -97,61 +105,121 @@ function AddRecipe() {
       <div className="Area">
         <div className="Image" />
         <div className="UpperInputBox">
-          <InputBox
-            type={"레시피 명"}
-            placeholder={"레시피명을 입력 하세요."}
-            value={foodname}
-            func={setfoodname}
-          />
-          <InputBox
-            type={"난이도"}
-            placeholder={"요리 난이도를 입력하세요."}
-            value={level}
-            func={setlevel}
-          />
-          <InputBox
-            type={"요리 시간"}
-            placeholder={"소요되는 시간을 입력하세요."}
-            value={cooking_time}
-            func={settime}
-          />
-          <InputBox
-            type={"국적"}
-            placeholder={"어느나라 음식입니까?"}
-            value={nation}
-            func={setnation}
-          />
-          <InputBox
-            type={"종류"}
-            placeholder={"요리의 종류는 무엇입니까? (ex: 밥,국,...."}
-            value={type}
-            func={settype}
-          />
-          <InputBox
-            type={"양"}
-            placeholder={"몇 인분입니까?"}
-            value={qnt}
-            func={setqnt}
-          />
-          <InputBox
-            type={"칼로리"}
-            placeholder={"칼로리는 어떻습니까?"}
-            value={calorie}
-            func={setcalorie}
-          />
+          <div className="input-box">
+            <div className="input-label">
+              <label for="foodName">요리 이름</label>
+            </div>
+            <div className="input-area">
+              <input
+                type="text"
+                id="foodName"
+                value={foodName}
+                onChange={(e) => setFoodName(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="input-box">
+            <div className="input-label">
+              <label for="time">요리 시간</label>
+            </div>
+            <div className="input-area">
+              <input
+                type="text"
+                id="time"
+                onChange={(e) => setTime(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="input-box">
+            <div className="input-label">
+              <label for="difficulties">요리 난이도</label>
+            </div>
+            <div className="input-area">
+              <select
+                id="difficulties"
+                onChange={(e) => setLevel(e.target.value)}
+              >
+                <option value="초보환영">초보환영</option>
+                <option value="보통">보통</option>
+                <option value="어려움">어려움</option>
+              </select>
+            </div>
+          </div>
+          <div className="input-box">
+            <div className="input-label">
+              <label for="nation">국적</label>
+            </div>
+            <div className="input-area">
+              <input
+                type="text"
+                id="nation"
+                onChange={(e) => setNation(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="input-box">
+            <div className="input-label">
+              <label for="qnt">양</label>
+            </div>
+            <div className="input-area">
+              <input
+                type="number"
+                id="qnt"
+                min="1"
+                onChange={(e) => setQnt(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="input-box">
+            <div className="input-label">
+              <label for="type">종류</label>
+            </div>
+            <div className="input-area">
+              <input
+                type="text"
+                id="type"
+                onChange={(e) => setType(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="input-box">
+            <div className="input-label">
+              <label for="calorie">칼로리</label>
+            </div>
+            <div className="input-area">
+              <input
+                type="number"
+                id="calorie"
+                min="1"
+                onChange={(e) => setCalorie(e.target.value)}
+              />
+            </div>
+          </div>
         </div>
       </div>
       <div className="Area2">
-        <div className="Row">
+        {/* <div className="Row">
           <span className="Span">설명 </span>
           <textarea
             className="DecsBox"
             placeholder="음식에 대한 설명을 적어 주세요"
             value={summary}
             onChange={(e) => {
-              setsummary(e.target.value);
+              setSummary(e.target.value);
             }}
           />
+        </div> */}
+        <div className="summary-box">
+          <div className="summary-label">
+            <label for="summary">설명</label>
+          </div>
+          <div className="summary-area">
+            <textarea
+              id="summary"
+              value={summary}
+              onChange={(e) => setSummary(e.target.value)}
+            />
+          </div>
         </div>
         <div className="Row">
           <span className="Span">재료 </span>
@@ -175,7 +243,7 @@ function AddRecipe() {
         </div>
       </div>
       <div className="Area3">
-        {!addstep ? (
+        {!addStep ? (
           <div className="RecipeArea">
             {Recipe.map((x, i) => (
               <RecipeBoxFrame key={i} data={x} />
@@ -188,7 +256,7 @@ function AddRecipe() {
               placeholder="이번 단계의 요리과정을 적어주세요"
               value={step}
               onChange={(e) => {
-                setstep(e.target.value);
+                setStep(e.target.value);
               }}
             />
             <button className="Addigr" onClick={getrecipe}>
@@ -198,9 +266,9 @@ function AddRecipe() {
         )}
         <button
           className="RecipebuttonArea"
-          onClick={() => setaddstep(!addstep)}
+          onClick={() => setAddStep(!addStep)}
         >
-          {!addstep ? "요리과정 추가" : "요리과정 입력 취소"}
+          {!addStep ? "요리과정 추가" : "요리과정 입력 취소"}
         </button>
       </div>
       <button className="Button" onClick={get}>
@@ -245,4 +313,6 @@ function RecipeBoxFrame({ data }) {
   );
 }
 
-export default AddRecipe;
+// function uploadRecipe() {}
+
+export default withRouter(AddRecipe);

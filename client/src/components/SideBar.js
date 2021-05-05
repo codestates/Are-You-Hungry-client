@@ -1,10 +1,12 @@
 import React from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import "../styles/SideBar.css";
 
-const SideBar = ({ isLoggedIn, initUserState, accessToken }) => {
+const SideBar = ({ initUserState, history }) => {
+  const accessToken = sessionStorage.getItem("accessToken");
+
   const onLogOut = () => {
     axios
       .get(
@@ -17,6 +19,7 @@ const SideBar = ({ isLoggedIn, initUserState, accessToken }) => {
       )
       .then((res) => {
         initUserState();
+        history.push("");
       })
       .catch((e) => console.log(e));
   };
@@ -31,7 +34,7 @@ const SideBar = ({ isLoggedIn, initUserState, accessToken }) => {
               Home
             </Link>
           </li>
-          {isLoggedIn ? (
+          {accessToken ? (
             <>
               <li className="main-nav__item">
                 <p href="#">My Recipes</p>
@@ -47,7 +50,7 @@ const SideBar = ({ isLoggedIn, initUserState, accessToken }) => {
                     </Link>
                   </li>
                   <li className="sub-nav__item">
-                    <Link to="/add-new-recipe" className="link">
+                    <Link to="/recipe/add-new-recipe" className="link">
                       Add new recipe
                     </Link>
                   </li>
@@ -64,7 +67,7 @@ const SideBar = ({ isLoggedIn, initUserState, accessToken }) => {
       </nav>
       {
         <div className="sign-out__btn">
-          {isLoggedIn ? (
+          {accessToken ? (
             <Link to="/" className="link" onClick={onLogOut}>
               Sign Out
             </Link>
@@ -79,4 +82,4 @@ const SideBar = ({ isLoggedIn, initUserState, accessToken }) => {
   );
 };
 
-export default SideBar;
+export default withRouter(SideBar);
