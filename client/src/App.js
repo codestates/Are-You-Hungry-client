@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
-// import axios from "axios";
 
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/Signup";
@@ -9,6 +8,8 @@ import Recipe from "./pages/Recipe";
 import Favorites from "./pages/MyRecipes/Favorites";
 import AddRecipe from "./pages/MyRecipes/AddRecipe";
 import MyPage from "./pages/Mypage";
+import MyRecipes from "./pages/MyRecipes/MyRecipes";
+import MyPage from "./pages/MyPage";
 import Delete from "./pages/Delete";
 
 import SideBar from "./components/SideBar";
@@ -59,6 +60,10 @@ const App = () => {
           <AddRecipe accessToken={accessToken} userInfo={userInfo} />
         </Route>
         <Route path="/recipe/:foodname">
+        <Route exact path="/recipe/myrecipes">
+          <MyRecipes accessToken={accessToken} userInfo={userInfo} />
+        </Route>
+        <Route path="/recipe/:food_id">
           <Recipe accessToken={accessToken} />
         </Route>
         <Route path="/mypage">
@@ -69,6 +74,7 @@ const App = () => {
             accessToken={accessToken}
             userInfo={userInfo}
             initUserState={initUserState}
+            isLoggedIn={isLoggedIn}
           />
         </Route>
         <Route
