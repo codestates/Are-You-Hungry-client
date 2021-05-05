@@ -1,0 +1,34 @@
+#display-ingredients {
+  background-color: white;
+  margin-right: 16px;
+  border: 1px solid black;
+  height: 100%;
+  overflow: scroll;
+}
+
+#display-ingredients p {
+  margin: 8px 0;
+  text-align: center;
+}
+
+#add-ingredient-form {
+  width: 100%;
+  min-width: 100%;
+  position: relative;
+}
+
+#add-ingredient-form button {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4px;
+}
+
+.ingredient-entry {
+  text-align: center;
+}

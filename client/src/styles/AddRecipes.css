@@ -1,0 +1,23 @@
+#display-instructions {
+  background-color: white;
+  border: 1px solid black;
+  height: 85%;
+  overflow: scroll;
+  flex: 1 0;
+}
+
+#display-instructions p {
+  margin: 8px 0;
+  text-align: center;
+}
+
+#add-instruction-form {
+  height: 154px;
+  display: grid;
+  grid-template-rows: 80% 20%;
+}
+
+.instruction-container {
+  margin-bottom: 8px;
+  text-align: center;
+}

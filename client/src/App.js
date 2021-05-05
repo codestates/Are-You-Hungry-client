@@ -6,7 +6,7 @@ import SignUp from "./pages/Signup";
 import RecipeSearch from "./pages/RecipeSearch";
 import Recipe from "./pages/Recipe";
 import Favorites from "./pages/MyRecipes/Favorites";
-import AddRecipe from "./pages/MyRecipes/AddRecipe";
+import NewRecipe from "./pages/MyRecipes/NewRecipe";
 import MyPage from "./pages/MyPage";
 import MyRecipes from "./pages/MyRecipes/MyRecipes";
 import Delete from "./pages/Delete";
@@ -46,7 +46,7 @@ const App = () => {
           <Favorites userInfo={userInfo} initUserState={initUserState} />
         </Route>
         <Route exact path="/recipe/add-new-recipe">
-          <AddRecipe initUserState={initUserState} userInfo={userInfo} />
+          <NewRecipe initUserState={initUserState} userInfo={userInfo} />
         </Route>
         <Route exact path="/recipe/myrecipes">
           <MyRecipes initUserState={initUserState} userInfo={userInfo} />

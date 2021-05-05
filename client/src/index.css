@@ -27,6 +27,5 @@ body {
   display: grid;
   grid-template-columns: 220px auto;
   grid-template-areas: "sidebar main";
-  grid-gap: 10px;
   width: 100%;
 }

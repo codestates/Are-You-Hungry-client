@@ -64,21 +64,29 @@
   display: flex;
   flex: 2 0 0;
   flex-direction: row;
-  border: solid blue 1px;
 }
 
 .Area2 {
   display: flex;
   flex: 1 0 0;
   flex-direction: column;
-  border: solid blue 1px;
   padding: 16px;
 }
+
+.summary-ingredient-area {
+  display: flex;
+  padding: 16px;
+}
+
+.summary-ingredient-area > * {
+  flex: 1 0;
+  display: flex;
+}
+
 .Area3 {
   display: flex;
   flex: 4 0 0;
   flex-direction: column;
-  border: solid blue 1px;
 }
 
 .UpperInputBox {
@@ -106,6 +114,7 @@
 .input-box {
   display: flex;
   margin-bottom: 16px;
+  justify-content: center;
 }
 .input-box:last-child {
   margin-bottom: 0;
@@ -123,12 +132,26 @@
 .input-area input[type="number"] {
   width: 100%;
 }
-.summary {
-  width: 50%;
+#summary {
+  width: 80%;
+  height: 150px;
 }
 .summary-label {
-  width: 10%;
+  width: 20%;
 }
 .summary-area {
   width: 100%;
+}
+.ingredient-box {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 67% 30%;
+  height: 154px;
+}
+.recipe-area {
+  height: 30%;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 60% 30%;
+  grid-gap: 16px;
 }
