@@ -5,15 +5,16 @@ import axios from "axios";
 import "../styles/Delete.css";
 import "../styles/TestPassword.css";
 
-const Delete = (props) => {
+const Delete = ({ initUserState, userInfo, history }) => {
+  const accessToken = sessionStorage.getItem("accessToken");
+
+  if (!accessToken) {
+    initUserState();
+    history.push("/");
+  }
+
   const [passed, setPassed] = useState(false);
   const [password, setPassword] = useState("");
-
-  const { accessToken, isLoggedIn } = props;
-
-  if (!isLoggedIn) {
-    props.history.push("/");
-  }
 
   const testPassword = () => {
     axios
@@ -37,7 +38,7 @@ const Delete = (props) => {
       .delete(
         "http://ec2-15-165-205-147.ap-northeast-2.compute.amazonaws.com:4000/user",
         {
-          username: props.userInfo.username,
+          username: userInfo.username,
           password: password,
         },
         {
@@ -47,8 +48,8 @@ const Delete = (props) => {
         }
       )
       .then((res) => {
-        props.initUserState();
-        props.history.push("/");
+        initUserState();
+        history.push("/");
       })
       .catch((e) => console.log(e));
   };

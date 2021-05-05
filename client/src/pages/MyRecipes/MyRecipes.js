@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
 
 import RecipeList from "../../components/RecipeList";
 import "../../styles/Favorites.css";
 
-const MyRecipes = (props) => {
-  const username = props.userInfo.username;
-  const accessToken = props.accessToken;
+const MyRecipes = ({ history, initUserState, userInfo }) => {
+  const username = userInfo.username;
+  const accessToken = sessionStorage.getItem("accessToken");
+
+  if (!accessToken) {
+    initUserState();
+    history.push("/");
+  }
+
   const [uploaded, setUploaded] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchUploads = () => {
     axios
       .get(
-        `http://ec2-15-165-205-147.ap-northeast-2.compute.amazonaws.com:4000/user/uploaded?username=${username}`,
+        `http://ec2-15-165-205-147.ap-northeast-2.compute.amazonaws.com:4000/user/uploaded/${username}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -79,4 +86,4 @@ const MyRecipes = (props) => {
   );
 };
 
-export default MyRecipes;
+export default withRouter(MyRecipes);

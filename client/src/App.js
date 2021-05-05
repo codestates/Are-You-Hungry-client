@@ -7,38 +7,31 @@ import RecipeSearch from "./pages/RecipeSearch";
 import Recipe from "./pages/Recipe";
 import Favorites from "./pages/MyRecipes/Favorites";
 import AddRecipe from "./pages/MyRecipes/AddRecipe";
-import MyPage from "./pages/Mypage";
-import MyRecipes from "./pages/MyRecipes/MyRecipes";
 import MyPage from "./pages/MyPage";
+import MyRecipes from "./pages/MyRecipes/MyRecipes";
 import Delete from "./pages/Delete";
 
 import SideBar from "./components/SideBar";
 import "./App.css";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const accessToken = sessionStorage.getItem("accessToken");
+
   const [userInfo, setUserInfo] = useState([]);
-  const [accessToken, setAccessToken] = useState("");
 
   const onLogInSuccess = (data) => {
-    setIsLoggedIn((prev) => !prev);
     setUserInfo(data.userinfo);
-    setAccessToken(data.accessToken);
+    sessionStorage.setItem("accessToken", data.accessToken);
   };
 
   const initUserState = () => {
     setUserInfo([]);
-    setIsLoggedIn(false);
-    setAccessToken("");
+    sessionStorage.clear();
   };
 
   return (
     <>
-      <SideBar
-        isLoggedIn={isLoggedIn}
-        initUserState={initUserState}
-        accessToken={accessToken}
-      />
+      <SideBar initUserState={initUserState} />
       <Switch>
         <Route exact path="/signin">
           <SignIn onLogInSuccess={onLogInSuccess} />
@@ -47,41 +40,31 @@ const App = () => {
           <SignUp />
         </Route>
         <Route exact path="/recipe">
-          <RecipeSearch
-            accessToken={accessToken}
-            isLoggedIn={isLoggedIn}
-            initUserState={initUserState}
-          />
+          <RecipeSearch initUserState={initUserState} />
         </Route>
         <Route exact path="/recipe/favorites">
-          <Favorites accessToken={accessToken} userInfo={userInfo} />
+          <Favorites userInfo={userInfo} initUserState={initUserState} />
         </Route>
-        <Route exact path="/add-new-recipe">
-          <AddRecipe accessToken={accessToken} userInfo={userInfo} />
+        <Route exact path="/recipe/add-new-recipe">
+          <AddRecipe initUserState={initUserState} userInfo={userInfo} />
         </Route>
-        <Route path="/recipe/:foodname">
         <Route exact path="/recipe/myrecipes">
-          <MyRecipes accessToken={accessToken} userInfo={userInfo} />
+          <MyRecipes initUserState={initUserState} userInfo={userInfo} />
         </Route>
         <Route path="/recipe/:food_id">
-          <Recipe accessToken={accessToken} />
+          <Recipe initUserState={initUserState} />
         </Route>
         <Route path="/mypage">
-          <MyPage accessToken={accessToken} userInfo={userInfo} />
+          <MyPage userInfo={userInfo} initUserState={initUserState} />
         </Route>
         <Route path="/delete">
-          <Delete
-            accessToken={accessToken}
-            userInfo={userInfo}
-            initUserState={initUserState}
-            isLoggedIn={isLoggedIn}
-          />
+          <Delete userInfo={userInfo} initUserState={initUserState} />
         </Route>
         <Route
           exact
           path="/"
           render={() => {
-            return isLoggedIn ? (
+            return accessToken ? (
               <Redirect to="/recipe" />
             ) : (
               <Redirect to="/signin" />
