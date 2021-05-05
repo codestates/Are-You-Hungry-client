@@ -6,6 +6,8 @@ import SignUp from "./pages/Signup";
 import RecipeSearch from "./pages/RecipeSearch";
 import Recipe from "./pages/Recipe";
 import Favorites from "./pages/MyRecipes/Favorites";
+import AddRecipe from "./pages/MyRecipes/AddRecipe";
+import MyPage from "./pages/Mypage";
 import MyRecipes from "./pages/MyRecipes/MyRecipes";
 import MyPage from "./pages/MyPage";
 import Delete from "./pages/Delete";
@@ -54,6 +56,10 @@ const App = () => {
         <Route exact path="/recipe/favorites">
           <Favorites accessToken={accessToken} userInfo={userInfo} />
         </Route>
+        <Route exact path="/add-new-recipe">
+          <AddRecipe accessToken={accessToken} userInfo={userInfo} />
+        </Route>
+        <Route path="/recipe/:foodname">
         <Route exact path="/recipe/myrecipes">
           <MyRecipes accessToken={accessToken} userInfo={userInfo} />
         </Route>
