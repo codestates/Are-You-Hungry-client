@@ -17,7 +17,6 @@ search를 통하여서 쉽게 배울 수 있는 recipe!
 | 공인택 | Back-end    |
 | 방경태 | Back-end    |
 
----
 
 ---
 
