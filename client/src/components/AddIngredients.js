@@ -35,7 +35,7 @@ const AddIngredients = ({ ingredients, setIngredients }) => {
       </div>
       <form onSubmit={(e) => e.preventDefault()} id="add-ingredient-form">
         <div className="input-container">
-          <label for="ingredient-name">재료명</label>
+          <label htmlFor="ingredient-name">재료명</label>
           <input
             type="text"
             id="ingredient-name"
@@ -44,7 +44,7 @@ const AddIngredients = ({ ingredients, setIngredients }) => {
           />
         </div>
         <div className="input-container">
-          <label for="ingredient-quantity">양</label>
+          <label htmlFor="ingredient-quantity">양</label>
           <input
             type="text"
             id="ingredient-quantity"
@@ -53,7 +53,7 @@ const AddIngredients = ({ ingredients, setIngredients }) => {
           />
         </div>
         <div className="input-container">
-          <label for="ingredient-type">종류</label>
+          <label htmlFor="ingredient-type">종류</label>
           <select
             id="ingredient-type"
             value={type}

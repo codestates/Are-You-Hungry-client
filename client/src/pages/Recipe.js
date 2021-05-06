@@ -52,29 +52,51 @@ const Recipe = ({ match, initUserState, history }) => {
         <h2>No recipes found!</h2>
       ) : (
         <>
-          <h2>{foodInfo.food_name}</h2>
-          <img src={foodInfo.food_img} alt={foodInfo.food_name} />
-          <p>
-            태그: {foodInfo.level}, {foodInfo.nation}, {foodInfo.qnt},{" "}
-            {foodInfo.cooking_time}
-          </p>
-          <p>{foodInfo.summary}</p>
-          <p>재료</p>
-          <ul>
-            {ingredients.map((item) => {
-              return (
-                <li>
-                  {item.name}, {item.cap}
-                </li>
-              );
-            })}
-          </ul>
-          <p>조리법</p>
-          <ul>
-            {instructions.map((instruction) => {
-              return <li>{instruction.cooking_dc}</li>;
-            })}
-          </ul>
+          <section className="bg_light">
+            <div className="container">
+              <div className="split-grid">
+                <div>
+                  <img src={foodInfo.food_img} alt={foodInfo.food_name} />
+                </div>
+                <div className="food-info-container">
+                  <h1 id="food-title">{foodInfo.food_name}</h1>
+                  <p>{foodInfo.summary} </p>
+                  <p className="tag">
+                    태그: {foodInfo.level}, {foodInfo.nation}, {foodInfo.qnt},{" "}
+                    {foodInfo.cooking_time}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section className="bg_dark">
+            <div className="container">
+              <h2 className=" title">INGREDIENTS</h2>
+              <div className="ingredients-container">
+                <ul className="ingredients">
+                  {ingredients.map((item) => {
+                    return (
+                      <li className="item">
+                        {item.name}, {item.cap}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section className="bg_primary">
+            <div className="container">
+              <div className="recipe-container">
+                <h2 className="title">INSTRUCTIONS</h2>
+                <ol>
+                  {instructions.map((instruction) => {
+                    return <li className="recipe">{instruction.cooking_dc}</li>;
+                  })}
+                </ol>
+              </div>
+            </div>
+          </section>
         </>
       )}
     </main>
