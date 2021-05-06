@@ -137,7 +137,7 @@
   height: 150px;
 }
 .summary-label {
-  width: 20%;
+  width: 15%;
 }
 .summary-area {
   width: 100%;
@@ -150,8 +150,21 @@
 }
 .recipe-area {
   height: 30%;
+  max-height: 183px;
   padding: 16px;
   display: grid;
   grid-template-columns: 60% 30%;
   grid-gap: 16px;
+}
+.buttons {
+  height: 16%;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+#submit-recipe-btn,
+#init-recipe-btn {
+  margin: 16px;
+  width: 25%;
+  height: 50px;
 }

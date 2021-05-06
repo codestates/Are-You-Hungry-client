@@ -1,7 +1,7 @@
 #display-instructions {
   background-color: white;
   border: 1px solid black;
-  height: 85%;
+  height: 100%;
   overflow: scroll;
   flex: 1 0;
 }
@@ -16,7 +16,9 @@
   display: grid;
   grid-template-rows: 80% 20%;
 }
-
+#add-instruction-form textarea {
+  padding: 8px;
+}
 .instruction-container {
   margin-bottom: 8px;
   text-align: center;
