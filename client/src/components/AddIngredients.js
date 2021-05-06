@@ -14,7 +14,7 @@ const AddIngredients = ({ ingredients, setIngredients }) => {
     }
     setName("");
     setQty("");
-    setType("");
+    setType("주재료");
   };
 
   const renderedIngredients = ingredients.map((ingredient) => {
