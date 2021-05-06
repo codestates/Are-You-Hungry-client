@@ -67,7 +67,7 @@ function NewRecipe({ initUserState, history }) {
     ) {
       axios
         .post(
-          "http://are-you-hungry-bucket.s3-website.ap-northeast-2.amazonaws.com/user/recipe",
+          "http://ec2-15-165-205-147.ap-northeast-2.compute.amazonaws.com:4000/user/recipe",
           uploadData,
           { headers: { Authorization: `Bearer ${accessToken}` } }
         )
