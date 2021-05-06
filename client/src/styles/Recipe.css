@@ -1,6 +1,93 @@
-.recipe-page {
+.split-grid {
+  display: grid;
+  grid-template-columns: 50% 40%;
+}
+
+.split-grid > div:first-child {
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+
+.food-info-container {
+  text-align: center;
+}
+
+#food-title {
+  font-size: 3rem;
+  color: black;
+}
+
+.tag {
+  margin-top: 10px;
+}
+
+.title {
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  margin-top: 0;
+  text-align: center;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+section {
+  padding: 3rem 0;
+}
+
+.bg_light {
+  background-color: #f3eed9;
+}
+
+.bg_primary {
+  color: #fff;
+  background-color: #824936;
+}
+
+.bg_dark {
+  color: #fff;
+  background-color: #222c2a;
+}
+
+.ingredients-container {
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ingredients {
+  column-count: 3;
+  column-rule: 1px single grey;
+  list-style: none;
+  margin: 16px 0px 0px 0px;
+  padding: 0;
+  width: 70%;
+}
+
+.item {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.recipe-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+ol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+ol li {
+  margin-top: 16px;
 }
