@@ -19,14 +19,11 @@ function NewRecipe({ initUserState, history }) {
   const [nation, setNation] = useState("한식");
   const [type, setType] = useState("밥");
   const [qnt, setQnt] = useState("");
-  const [calorie, setCalorie] = useState("0Kcal");
+  const [calorie, setCalorie] = useState("");
   const [summary, setSummary] = useState("");
 
   const [ingredients, setIngredients] = useState([]);
   const [recipe, setRecipe] = useState([]);
-
-  console.log(calorie);
-
   // function get() {
   //   let Food_info = {
   //     foodName,
@@ -186,7 +183,7 @@ function NewRecipe({ initUserState, history }) {
                 id="calorie"
                 value={calorie}
                 min="1"
-                onChange={(e) => setCalorie(e.target.value + "Kcal")}
+                onChange={(e) => setCalorie(e.target.value)}
               />
             </div>
           </div>
