@@ -4,3 +4,136 @@
   align-items: center;
   flex-direction: column;
 }
+
+:root {
+  --clr-primary-200: #f3eed9;
+  --clr-primary-400: #824936;
+
+  --clr-neutral-100: #fff;
+  --clr-neutral-900: #222c2a;
+
+  --ff-primary: "Robboto", sans-serif;
+  --ff-accent: "Playfair Display", serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 1em;
+  font-family: var(--ff-primary);
+  font-weight: 300;
+  font-size: 1.3123rem;
+  line-height: 1.6;
+}
+
+.food_name {
+  font-size: 3rem;
+}
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--clr-primary-400);
+  font-family: var(--ff-accent);
+  font-weight: 900;
+  line-height: 1;
+}
+
+h2,
+h3,
+p {
+  margin-bottom: 1em;
+}
+.text_center {
+  text-align: center;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+header,
+section {
+  padding: 3rem 0;
+}
+
+@media (min-width: 40em) {
+  header,
+  section {
+    padding: 7rem 0;
+  }
+}
+.container {
+  margin-inline: auto;
+  width: min(90%, 70.5rem);
+}
+
+.split {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 40em) {
+  .split {
+    flex-direction: row;
+  }
+
+  .split > * {
+    flex-basis: 100%;
+  }
+
+  .split > * + * {
+    margin-left: 2em;
+  }
+
+  .split {
+    margin: 3em;
+  }
+}
+
+.container--narrow {
+  max-width: 34rem;
+}
+.bg_light {
+  background-color: var(--clr-primary-200);
+}
+.bg_primary {
+  color: var(--clr-neutral-100);
+  background-color: var(--clr-primary-400);
+}
+
+.bg_dark {
+  color: var(--clr-neutral-100);
+  background-color: var(--clr-neutral-900);
+}
+
+.bg_primary h2,
+.bg_light h2 {
+  color: var(--clr-primary-200);
+}
+
+.recipe {
+  margin: 2rem;
+}
+
+.ingredients {
+  -webkit-column-count: 3; /* Chrome/Opera, Safari */
+  -moz-column-count: 3; /* Mozilla Firefox */
+  column-count: 3;
+
+  /* Properties below are optional: */
+  -webkit-column-gap: 50px; /* Chrome/Opera, Safari */
+  -moz-column-gap: 50px; /* Mozilla Firefox */
+  column-gap: 50px;
+
+  -webkit-column-rule: 1px single grey; /* Chrome/Opera, Safari */
+  -moz-column-rule: 1px single grey; /* Mozilla Firefox */
+  column-rule: 1px single grey;
+}

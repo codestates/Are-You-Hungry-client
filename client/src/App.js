@@ -7,7 +7,7 @@ import RecipeSearch from "./pages/RecipeSearch";
 import Recipe from "./pages/Recipe";
 import Favorites from "./pages/MyRecipes/Favorites";
 import NewRecipe from "./pages/MyRecipes/NewRecipe";
-import MyPage from "./pages/MyPage";
+import MyPage from "./pages/Mypage";
 import MyRecipes from "./pages/MyRecipes/MyRecipes";
 import Delete from "./pages/Delete";
 

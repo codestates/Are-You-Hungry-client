@@ -45,14 +45,14 @@ const Recipe = ({ match, initUserState, history }) => {
   useEffect(fetchRecipe, []);
 
   return (
-    <main className="main recipe-page">
+    <main className="main">
       {isLoading ? (
         <p>Loading...</p>
       ) : typeof foodInfo === "string" ? (
-        <h2>No recipes found!</h2>
+        <h2 className="recipe-page">No recipes found!</h2>
       ) : (
         <>
-          <h2>{foodInfo.food_name}</h2>
+          {/* <h2>{foodInfo.food_name}</h2>
           <img src={foodInfo.food_img} alt={foodInfo.food_name} />
           <p>
             태그: {foodInfo.level}, {foodInfo.nation}, {foodInfo.qnt},{" "}
@@ -74,7 +74,55 @@ const Recipe = ({ match, initUserState, history }) => {
             {instructions.map((instruction) => {
               return <li>{instruction.cooking_dc}</li>;
             })}
-          </ul>
+          </ul> */}
+
+          <section className="bg_light">
+            <div className="container">
+              <div className="split">
+                <div>
+                  <img src={foodInfo.food_img} alt={foodInfo.food_name} />
+                </div>
+                <div>
+                  <h1 className="food_name">{foodInfo.food_name}</h1>
+                  <p>{foodInfo.summary} </p>
+                  <p>
+                    태그: {foodInfo.level}, {foodInfo.nation}, {foodInfo.qnt},{" "}
+                    {foodInfo.cooking_time}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg_dark">
+            <div className="container">
+              <h2 className="text_center">INGREDIENTS(재료)</h2>
+              <div className="split">
+                <ul className="ingredients">
+                  {ingredients.map((item) => {
+                    return (
+                      <li>
+                        {item.name}, {item.cap}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg_primary">
+            <div className="container">
+              <div className="split">
+                <h2 className="text_center">RECIPE(조리법)</h2>
+                <ol>
+                  {instructions.map((instruction) => {
+                    return <li className="recipe">{instruction.cooking_dc}</li>;
+                  })}
+                </ol>
+              </div>
+            </div>
+          </section>
         </>
       )}
     </main>
