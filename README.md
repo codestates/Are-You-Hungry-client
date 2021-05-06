@@ -8,8 +8,6 @@
 
 search를 통하여서 쉽게 배울 수 있는 recipe!
 
-재료들을 가지고 검색하는 기능도 가지고 있다!
-
 오늘은 Are-You-Hungry?
 
 | Header | Description |
