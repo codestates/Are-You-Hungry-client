@@ -4,9 +4,11 @@
 
 좋은 레시피를 구할 수 없을까?
 
-이제 Are-You-Hungry앱에서 검색으로 레시피를 다운받아 보자!
+이제 Are-You-Hungry 웹에서 검색으로 레시피를 서치해보자!
 
 search를 통하여서 쉽게 배울 수 있는 recipe!
+
+재료들을 가지고 검색하는 기능도 가지고 있다!
 
 오늘은 Are-You-Hungry?
 
@@ -16,7 +18,6 @@ search를 통하여서 쉽게 배울 수 있는 recipe!
 | 문현돈 | Front-end   |
 | 공인택 | Back-end    |
 | 방경태 | Back-end    |
-
 
 ---
 
@@ -37,3 +38,4 @@ search를 통하여서 쉽게 배울 수 있는 recipe!
 - Amazong S3
 - MySql
 - Sequelize
+
