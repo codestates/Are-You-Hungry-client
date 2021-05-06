@@ -30,7 +30,7 @@ const RecipeList = ({ recipes }) => {
   return (
     <>
       <p style={{ textAlign: "center" }}>
-        {renderedRecipeCards.length} recipes found!
+        {renderedRecipeCards.length} recipe(s) found!
       </p>
       <div className="recipe-list-grid">{renderedRecipeCards}</div>
     </>

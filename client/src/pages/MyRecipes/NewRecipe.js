@@ -28,9 +28,9 @@ function NewRecipe({ initUserState, history }) {
 
   const uploadData = {
     Food_info: {
-      foodName,
+      food_name: foodName,
       level,
-      time,
+      cooking_time: time,
       nation,
       type,
       qnt: qnt + "인분",
@@ -165,7 +165,7 @@ function NewRecipe({ initUserState, history }) {
           </div>
           <div className="input-box">
             <div className="input-label">
-              <label htmlFor="qnt">양</label>
+              <label htmlFor="qnt">양 (인분)</label>
             </div>
             <div className="input-area">
               <input

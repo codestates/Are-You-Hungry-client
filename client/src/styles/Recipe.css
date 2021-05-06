@@ -17,6 +17,10 @@
   color: black;
 }
 
+#food-img {
+  max-width: 300px;
+}
+
 .tag {
   margin-top: 10px;
 }
@@ -69,7 +73,6 @@ section {
 }
 
 .item {
-  margin-top: 10px;
   text-align: center;
 }
 

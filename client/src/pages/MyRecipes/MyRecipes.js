@@ -36,45 +36,7 @@ const MyRecipes = ({ history, initUserState, userInfo }) => {
       .catch((e) => console.log("Error in fetchUploads!"));
   };
 
-  const hardcodedRecipes = [
-    {
-      food_id: 1,
-      food_name: "나물비빔밥",
-      food_img: "http://file.okdab.com/UserFiles/searching/recipe/000200.jpg",
-      like: 1,
-      isOn: true,
-    },
-    {
-      food_id: 281,
-      food_name: "상추겉절이비빔밥",
-      food_img: "http://file.okdab.com/UserFiles/searching/recipe/071700.jpg",
-      like: 0,
-      isOn: false,
-    },
-    {
-      food_id: 299,
-      food_name: "열무비빔밥",
-      food_img: "http://file.okdab.com/UserFiles/searching/recipe/076800.jpg",
-      like: 0,
-      isOn: false,
-    },
-    {
-      food_id: 338,
-      food_name: "콩나물비빔밥",
-      food_img: "http://file.okdab.com/UserFiles/searching/recipe/086800.jpg",
-      like: 0,
-      isOn: false,
-    },
-    {
-      food_id: 427,
-      food_name: "돌솥비빔밥",
-      food_img: "http://file.okdab.com/UserFiles/searching/recipe/121400.jpg",
-      like: 0,
-      isOn: false,
-    },
-  ];
-
-  useEffect(() => setUploaded(hardcodedRecipes), []);
+  useEffect(fetchUploads, []);
 
   return (
     <main className="main favorites">
