@@ -42,7 +42,7 @@ const Favorites = ({ initUserState, history, userInfo }) => {
       .catch((e) => console.log("Error in fetchFavs!"));
   };
 
-  useEffect(fetchFavs, [accessToken, username]);
+  useEffect(fetchFavs, []);
 
   return (
     <main className="main favorites">

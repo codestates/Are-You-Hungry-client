@@ -5,8 +5,6 @@ const AddRecipes = ({ recipe, setRecipe }) => {
   const [stepNumber, setStepNumber] = useState(1);
   const [instruction, setInstruction] = useState("");
 
-  console.log(stepNumber, instruction);
-
   const addStep = () => {
     if (stepNumber && instruction) {
       setRecipe((prev) => {
@@ -45,6 +43,7 @@ const AddRecipes = ({ recipe, setRecipe }) => {
       <form id="add-instruction-form" onSubmit={(e) => e.preventDefault()}>
         <textarea
           id="instruction"
+          placeholder="순서대로 레시피를 작성해주세요."
           value={instruction}
           onChange={(e) => setInstruction(e.target.value)}
         />

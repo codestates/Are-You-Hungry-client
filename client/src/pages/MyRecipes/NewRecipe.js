@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
+import axios from "axios";
 
 import "../../components/AddIngredients";
 import AddIngredients from "../../components/AddIngredients";
@@ -24,20 +25,58 @@ function NewRecipe({ initUserState, history }) {
 
   const [ingredients, setIngredients] = useState([]);
   const [recipe, setRecipe] = useState([]);
-  // function get() {
-  //   let Food_info = {
-  //     foodName,
-  //     level,
-  //     time,
-  //     nation,
-  //     type,
-  //     qnt,
-  //     calorie,
-  //     summary,
-  //   };
-  //   let data = { Food_info, Recipe, Ingredients };
-  //   console.log(data);
-  // }
+
+  const uploadData = {
+    Food_info: {
+      foodName,
+      level,
+      time,
+      nation,
+      type,
+      qnt: qnt + "인분",
+      calorie: calorie + "Kcal",
+      summary,
+    },
+    Recipe: recipe,
+    Ingredients: ingredients,
+  };
+
+  const initRecipe = () => {
+    setFoodName("");
+    setLevel("초보환영");
+    setTime("5분");
+    setNation("한식");
+    setType("밥");
+    setQnt("");
+    setCalorie("");
+    setSummary("");
+    setIngredients([]);
+    setRecipe([]);
+  };
+
+  const uploadRecipe = () => {
+    if (
+      foodName &&
+      level &&
+      time &&
+      nation &&
+      type &&
+      qnt &&
+      calorie &&
+      summary
+    ) {
+      axios
+        .post(
+          "http://are-you-hungry-bucket.s3-website.ap-northeast-2.amazonaws.com/user/recipe",
+          uploadData,
+          { headers: { Authorization: `Bearer ${accessToken}` } }
+        )
+        .then((res) => {
+          history.push("/");
+        })
+        .catch((e) => console.log("Error in uploadRecipe!"));
+    }
+  };
 
   return (
     <main className="Main">
@@ -213,10 +252,16 @@ function NewRecipe({ initUserState, history }) {
       <div className="recipe-area">
         <AddRecipes recipe={recipe} setRecipe={setRecipe} />
       </div>
+      <div className="buttons">
+        <button id="submit-recipe-btn" onClick={uploadRecipe}>
+          레시피 제출
+        </button>
+        <button id="init-recipe-btn" onClick={initRecipe}>
+          레시피 초기화
+        </button>
+      </div>
     </main>
   );
 }
-
-// function uploadRecipe() {}
 
 export default withRouter(NewRecipe);
