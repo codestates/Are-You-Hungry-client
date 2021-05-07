@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/RecipeCard.css";
 
 const RecipeCard = ({ recipe }) => {
+  const [isOn, setIsOn] = useState(recipe.isOn);
+
+  const clickHeart = () => {
+    recipe.isOn = !recipe.isOn
+    setIsOn(!isOn)
+  }
+
+  console.log('recipe.isOn: ' + recipe.isOn)
+  console.log('isOn: ' + isOn)
+
   return (
     <div className="recipe-card">
       <img
@@ -21,11 +31,13 @@ const RecipeCard = ({ recipe }) => {
         </Link>
         <button
           id="recipe-heart"
+          onClick={clickHeart}
           className={recipe.isOn ? "heart liked-heart" : "heart"}
         ></button>
       </div>
     </div>
   );
+  
 };
 
 export default RecipeCard;
