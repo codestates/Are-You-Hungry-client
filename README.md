@@ -4,7 +4,7 @@
 
 좋은 레시피를 구할 수 없을까?
 
-이제 Are-You-Hungry 웹에서 검색으로 레시피를 서치해보자!
+이제 Are-You-Hungry 에서 레시피를 검색해보자!
 
 search를 통하여서 쉽게 배울 수 있는 recipe!
 
