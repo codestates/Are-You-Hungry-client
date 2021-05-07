@@ -67,7 +67,7 @@ function NewRecipe({ initUserState, history }) {
     ) {
       axios
         .post(
-          "http://are-you-hungry-bucket.s3-website.ap-northeast-2.amazonaws.com/user/recipe",
+          "http://ec2-15-165-205-147.ap-northeast-2.compute.amazonaws.com:4000/user/recipe",
           uploadData,
           { headers: { Authorization: `Bearer ${accessToken}` } }
         )
@@ -85,7 +85,7 @@ function NewRecipe({ initUserState, history }) {
         <div className="UpperInputBox">
           <div className="input-box">
             <div className="input-label">
-              <label for="foodName">요리 이름</label>
+              <label htmlFor="foodName">요리 이름</label>
             </div>
             <div className="input-area">
               <input
@@ -98,7 +98,7 @@ function NewRecipe({ initUserState, history }) {
           </div>
           <div className="input-box">
             <div className="input-label">
-              <label for="time">요리 시간</label>
+              <label htmlFor="time">요리 시간</label>
             </div>
             <div className="input-area">
               <select
@@ -128,7 +128,7 @@ function NewRecipe({ initUserState, history }) {
           </div>
           <div className="input-box">
             <div className="input-label">
-              <label for="difficulties">요리 난이도</label>
+              <label htmlFor="difficulties">요리 난이도</label>
             </div>
             <div className="input-area">
               <select
@@ -144,7 +144,7 @@ function NewRecipe({ initUserState, history }) {
           </div>
           <div className="input-box">
             <div className="input-label">
-              <label for="nation">국적</label>
+              <label htmlFor="nation">국적</label>
             </div>
             <div className="input-area">
               <select
@@ -165,7 +165,7 @@ function NewRecipe({ initUserState, history }) {
           </div>
           <div className="input-box">
             <div className="input-label">
-              <label for="qnt">양</label>
+              <label htmlFor="qnt">양</label>
             </div>
             <div className="input-area">
               <input
@@ -179,7 +179,7 @@ function NewRecipe({ initUserState, history }) {
           </div>
           <div className="input-box">
             <div className="input-label">
-              <label for="type">종류</label>
+              <label htmlFor="type">종류</label>
             </div>
             <div className="input-area">
               <select
@@ -214,7 +214,7 @@ function NewRecipe({ initUserState, history }) {
           </div>
           <div className="input-box">
             <div className="input-label">
-              <label for="calorie">칼로리</label>
+              <label htmlFor="calorie">칼로리</label>
             </div>
             <div className="input-area">
               <input
@@ -231,7 +231,7 @@ function NewRecipe({ initUserState, history }) {
       <div className="summary-ingredient-area">
         <div className="summary-box">
           <div className="summary-label">
-            <label for="summary">설명</label>
+            <label htmlFor="summary">설명</label>
           </div>
           <div className="summary-area">
             <textarea
