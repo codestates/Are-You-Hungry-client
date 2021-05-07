@@ -7,7 +7,7 @@ import RecipeSearch from "./pages/RecipeSearch";
 import Recipe from "./pages/Recipe";
 import Favorites from "./pages/MyRecipes/Favorites";
 import NewRecipe from "./pages/MyRecipes/NewRecipe";
-import Mypage from "./pages/Mypage";
+import MyPage from "./pages/MyPage";
 import MyRecipes from "./pages/MyRecipes/MyRecipes";
 import Delete from "./pages/Delete";
 
@@ -55,7 +55,7 @@ const App = () => {
           <Recipe initUserState={initUserState} />
         </Route>
         <Route path="/mypage">
-          <Mypage userInfo={userInfo} initUserState={initUserState} />
+          <MyPage userInfo={userInfo} initUserState={initUserState} />
         </Route>
         <Route path="/delete">
           <Delete userInfo={userInfo} initUserState={initUserState} />

@@ -38,10 +38,6 @@ const Delete = ({ initUserState, userInfo, history }) => {
       .delete(
         "http://ec2-15-165-205-147.ap-northeast-2.compute.amazonaws.com:4000/user",
         {
-          username: userInfo.username,
-          password: password,
-        },
-        {
           headers: {
             Authorization: "Bearer " + accessToken,
           },

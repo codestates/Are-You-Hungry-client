@@ -42,21 +42,36 @@ const MyPage = ({ userInfo, initUserState, history }) => {
   };
 
   const onEdit = () => {
-    if (newUsername && newPassword && newEmail && newPhone) {
-      axios.patch(
-        "http://ec2-15-165-205-147.ap-northeast-2.compute.amazonaws.com:4000/user",
-        {
-          username: newUsername,
-          password: newPassword,
-          email: newEmail,
-          phone: newPhone,
-        },
-        {
-          headers: {
-            Authorization: "Bearer " + accessToken,
-          },
-        }
-      );
+    const uploadData = {
+      username: newUsername,
+      password: newPassword,
+      email: newEmail,
+      phone: newPhone,
+    };
+
+    Object.keys(uploadData).forEach((key) => {
+      if (uploadData[key] === "") {
+        delete uploadData[key];
+      }
+    });
+
+    if (Object.keys(uploadData).length > 0) {
+      axios
+        .patch(
+          "http://ec2-15-165-205-147.ap-northeast-2.compute.amazonaws.com:4000/user",
+          uploadData,
+          {
+            headers: {
+              Authorization: "Bearer " + accessToken,
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res);
+          initUserState();
+          history.push("/");
+        })
+        .catch((e) => console.log(e));
     }
   };
 
@@ -90,7 +105,7 @@ const MyPage = ({ userInfo, initUserState, history }) => {
               onChange={(e) => setNewPhone(e.target.value)}
               required
             />
-            <button className="userEditBtn" onClick={() => onEdit()}>
+            <button className="userEditBtn" onClick={onEdit}>
               수정
             </button>
           </form>

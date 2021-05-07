@@ -30,7 +30,7 @@ const AddIngredients = ({ ingredients, setIngredients }) => {
   return (
     <>
       <div id="display-ingredients">
-        <p>Ingredients</p>
+        <p>재료</p>
         {renderedIngredients}
       </div>
       <form onSubmit={(e) => e.preventDefault()} id="add-ingredient-form">

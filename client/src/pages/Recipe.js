@@ -56,14 +56,22 @@ const Recipe = ({ match, initUserState, history }) => {
             <div className="container">
               <div className="split-grid">
                 <div>
-                  <img src={foodInfo.food_img} alt={foodInfo.food_name} />
+                  <img
+                    id="food-img"
+                    src={
+                      foodInfo.food_img
+                        ? foodInfo.food_img
+                        : "https://images.unsplash.com/photo-1545602608-a2071d60c6c1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=994&q=80"
+                    }
+                    alt={foodInfo.food_name}
+                  />
                 </div>
                 <div className="food-info-container">
                   <h1 id="food-title">{foodInfo.food_name}</h1>
                   <p>{foodInfo.summary} </p>
                   <p className="tag">
                     태그: {foodInfo.level}, {foodInfo.nation}, {foodInfo.qnt},{" "}
-                    {foodInfo.cooking_time}
+                    {foodInfo.cooking_time}, {foodInfo.calorie}
                   </p>
                 </div>
               </div>
